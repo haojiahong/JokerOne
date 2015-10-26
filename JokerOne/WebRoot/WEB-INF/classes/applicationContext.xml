@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+				http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context 
+				http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx 
+				http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- 使用注解annotation必须添加的一项 -->
+	<context:annotation-config />
+	<!-- 自动扫描与装配bean对象 子包和多包都可以 -->
+	<context:component-scan base-package="cn.itcast.oa"></context:component-scan>
+
+	<!-- 导入外部的properties文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+
+
+
+	<!--获取Spring容器管理对象的环境类 -->
+	<bean id="myApplicationContext" class="cn.itcast.oa.util.MyApplicationContextUtil"
+		init-method="handle"></bean>
+
+
+
+
+	<!--初始化ftp存储类，并设置相关属性 -->
+	<bean id="ftpStore" class="cn.itcast.oa.util.FtpStore"
+		init-method="initialize">
+		<!-- FTP服务器的地址 -->
+		<property name="serverIP">
+			<value>192.168.1.104</value>
+		</property>
+		<!-- 服务器端口 -->
+		<property name="serverPort">
+			<value>21</value>
+		</property>
+		<!-- FTP连接用户 -->
+		<property name="userId">
+			<value>admin</value>
+		</property>
+		<!-- FTP连接密码 -->
+		<property name="password">
+			<value>admin</value>
+		</property>
+	</bean>
+
+
+
+
+
+	<!--应用系统配置 -->
+	<bean id="appConfig" class="cn.itcast.oa.util.AppConfig">
+		<property name="appExtProp">
+			<ref bean="appExtConfig" />
+		</property>
+	</bean>
+
+	<!-- 项目的扩展参数Map -->
+	<bean class="java.util.HashMap" id="appExtConfig">
+		<constructor-arg>
+			<map>
+				<!--搜索中心路径 -->
+				<entry key="searchCenterPath">
+					<value>D:/hrms/indexfiles</value>
+				</entry>
+				<!-- 人员头像 -->
+				<entry key="perPicPath">
+					<value>D:/hrms/perpic/</value>
+				</entry>
+				<!-- 上传文件临时存放路径 -->
+				<entry key="fileTempPath">
+					<value>D:/hrms/temp/</value>
+				</entry>
+				<!--人员简历库附件 -->
+				<entry key="recFilePath">
+					<value>D:/hrms/recruit/</value>
+				</entry>
+				<!--附件管理 -->
+				<entry key="accessoryFilePath">
+					<value>D:/hrms/accessory/</value>
+				</entry>
+				<!--人员基本信息附件 -->
+				<entry key="personPath">
+					<value>D:/hrms/per/</value>
+				</entry>
+				<!--部门职位说明书 -->
+				<entry key="specificationPath">
+					<value>D:/hrms/specification/</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+
+
+
+	<!-- 配置sessionFactory (默认是单例的)(原来是LocalSessionFactoryBean这个类 改成注解形式变成下面的类) -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+		<!-- 指定hibernate配置文件路径 -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+
+		<!-- 针对注解，找到它的实体类们 -->
+		<property name="packagesToScan">
+			<list>
+				<value>cn.itcast.oa.domain</value>
+			</list>
+		</property>
+
+		<!-- 配置c3p0数据库连接池 -->
+		<property name="dataSource">
+			<!-- 匿名bean 只给datasource用的 不用写id name (通过反射调用默认构造方法构造bean) -->
+			<bean class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<!-- 数据连接信息 （通过该对象的getset的方法注入属性） -->
+				<property name="jdbcUrl" value="${jdbcUrl}"></property>
+				<property name="driverClass" value="${driverClass}"></property>
+				<property name="user" value="${user}"></property>
+				<property name="password" value="${password}"></property>
+				<!-- 其他配置（数据库连接池的个数等） -->
+				<!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+				<property name="initialPoolSize" value="3"></property>
+				<!--连接池中保留的最小连接数。Default: 3 -->
+				<property name="minPoolSize" value="3"></property>
+				<!--连接池中保留的最大连接数。Default: 15 -->
+				<property name="maxPoolSize" value="5"></property>
+				<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+				<property name="acquireIncrement" value="3"></property>
+				<!-- 控制数据源内加载的PreparedStatements数量。如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 
+					0 -->
+				<property name="maxStatements" value="8"></property>
+				<!--maxStatementsPerConnection定义了连接池内单个连接所拥有的最大缓存statements数。Default: 
+					0 -->
+				<property name="maxStatementsPerConnection" value="5"></property>
+				<!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+				<property name="maxIdleTime" value="1800"></property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- 配置声明式事务管理（采用注解方式） -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 注解驱动 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
+
+
+
+	<!--定时任务 quartz （spring内部集成） -->
+	<!-- 定时清空临时文件夹的任务类 -->
+	<bean id="taskJob" class="cn.itcast.oa.util.TaskJob"></bean>
+
+	<!-- 定义目标bean和bean中的方法 -->
+	<bean id="Job"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref local="taskJob" />
+		</property>
+		<property name="targetMethod">
+			<!-- 要执行的方法名称 -->
+			<value>exceteDelJob</value>
+		</property>
+	</bean>
+	<!--定义触发的时间 -->
+	<bean id="cron" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="Job" />
+		</property>
+		<property name="cronExpression">
+			<!--每天凌晨触发，这个网上一堆类似的 -->
+			<value>0 0 0 * * ?</value>
+		</property>
+	</bean>
+	<!-- 管理触发器 -->
+	<bean autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="cron" />
+			</list>
+		</property>
+	</bean>
+
+
+
+</beans>

@@ -1,0 +1,46 @@
+#contendDiv {
+	width: 700px;
+	height: 440px;
+}
+
+.fileWrap {
+	width: 320px;
+	heigth: 70px;
+	border: 1px solid #CCCCCC;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	background-color: #EEF5FD;
+}
+
+.imgWrap {
+	width: 70px;
+	heigth: 70px;
+	padding: 5px;
+	float: left;
+}
+
+.imgWrap img {
+	width: 60px;
+	heigth: 60px;
+}
+
+.titleWrap {
+	width: 230px;
+	height: 20px;
+	float: left;
+	margin-top: 10px;
+}
+
+.titleWrap span img {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.detailWrap {
+	width: 230px;
+	height: 50px;
+	float: left;
+	color: #6D6D6D
+}

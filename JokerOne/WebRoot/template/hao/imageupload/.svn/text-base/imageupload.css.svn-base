@@ -1,0 +1,23 @@
+.img_wrap {
+	width: 72px;
+	height: 72px;
+	float: left;
+	border: 1px solid #CCC;
+	padding:1px; 
+	margin:0px 7px 10px 7px; 
+	background-position: center;
+	background-repeat: no-repeat;
+	position:relative;
+	border-radius:50%;
+	overflow:hidden;
+}
+.upload-item-del{
+	display:none;
+	height: 16px;
+	width: 16px;
+	position:absolute;
+	right: 15px;
+	top: 2px;
+	color:white;
+	cursor:pointer;
+}

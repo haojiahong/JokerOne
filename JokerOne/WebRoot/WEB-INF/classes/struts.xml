@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- 动态方法调用，:感叹号方式(需要开启),官网不推荐使用这种方式,建议大家不要使用. -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" />
+
+	<!-- 配置后缀名为。action -->
+	<constant name="struts.action.extension" value="action,do" />
+
+	<!-- 配置主题为simple 自己控制样式 -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<!-- 默认所有的结果页面都存储在WEB-INF/content下，通过这个属性的值来改变到其他路径。 -->
+	<constant name="struts.convention.result.path" value="/" />
+
+	<!-- 默认包路径包含action,actions,struts,struts2的所有包都会被struts作为含有Action类的路径来搜索。可以通过设置这个属性来修改这个配置。 -->
+	<constant name="struts.convention.package.locators" value="action" />
+
+
+
+
+	<!-- Add packages here -->
+	<package name="hjh-default" extends="json-default">
+
+		<interceptors>
+			<interceptor name="sessionInterceptor" class="cn.itcast.oa.util.SessionInterceptor" />
+
+			<interceptor-stack name="sessionStack">
+
+				<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="sessionStack"></default-interceptor-ref>
+
+		<global-results>
+			<!-- 没有session -->
+			<result name="noSession">/noSession.jsp</result>
+
+		</global-results>
+
+	</package>
+
+</struts>

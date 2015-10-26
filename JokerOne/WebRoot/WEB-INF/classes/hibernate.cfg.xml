@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<!--数据库连接信息  -->
+	<!-- <property name="dialect">org.hibernate.dialect.MySQl5InnoDBDialect</property>
+		<property name="connection.driver_class">com.jdbc.mysql.Driver</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">123456</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/itcastoa0720</property> -->
+	<!--其他配置  -->
+	
+<!--  	<property name="hbm2ddl.auto">update</property> -->
+	<property name="show_sql">true</property>
+	<property name="format_sql">true</property>
+	 <!-- javax.persistence.validation.mode默认情况下是auto的，就是说如果不设置的话它是会自动去你的classpath下面找一个
+  bean-validation**包，但是找不到，所以beanvalitionFactory错误 -->
+	<property name="javax.persistence.validation.mode">none</property>
+
+</session-factory>
+</hibernate-configuration>

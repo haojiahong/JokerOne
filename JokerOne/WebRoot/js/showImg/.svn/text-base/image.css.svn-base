@@ -1,0 +1,162 @@
+.boxgallery{z-index: 3001;}
+.boxgallery {z-index: 3001;}
+.boxgallery  span.prev {
+	left: -44px;
+}
+
+.boxgallery  span.next {
+	right: -59px;
+}
+
+.boxgallery div.rote{
+	z-index: 3002;
+	height: 100px;
+	position: absolute;
+	top: -2px;
+	width: 100%;
+}
+
+.boxgallery div.rote span,
+.boxgallery  span.prev,
+.boxgallery  span.next {
+	position: relative;
+	top: -2px;
+	margin-left: 2px;
+	z-index: 3001;
+	display: block;
+	width: 67px;
+	height: 67px;
+	cursor: pointer;
+	left: 44%;
+	float: left;
+}
+
+.boxgallery div.rote span.roteRight i,
+.boxgallery  div.rote  span.prev i,
+.boxgallery  div.rote  span.next i{
+	display: block;
+	width:67px;
+	height:67px;
+}
+.boxgallery div.rote span.roteRight i{
+	background: url(turnright.png) no-repeat center center;
+}
+
+.boxgallery div.rote span.prev i{
+	background: url(prev.png) no-repeat center center;
+}
+
+.boxgallery div.rote span.next i{
+	background: url(next.png) no-repeat center center;
+}
+
+.picturesbox{
+	vertical-align:center;
+	width : 100%;
+	min-width:1024px;
+	min-height:768px;
+	height : 100%;
+	text-align : center;
+	position : absolute;
+	top : 0px;
+	left : 0px;
+	display : table-cell;
+	vertical-align : middle;
+	overflow:hidden;
+	z-index : 3000;
+	
+}
+
+.picturesbox .closeBtn{
+	height:64px;
+	width:64px;
+	position:absolute;
+	top:20px;
+	right:20px;
+	background:url(close_btn.png) no-repeat;
+	cursor: pointer;
+	z-index : 3001;
+}
+
+.picturesbox .thumbBox{
+	width: 30%;
+	height: 100%;
+	max-height:600px;
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	z-index: 3001;
+}
+
+.picturesbox .thumbBox .thumbList{
+	width: 120px;
+	height: 100%;
+	position: absolute;
+	top: -50%;
+	left: 50%;
+	overflow:hidden;
+}
+
+.picturesbox .thumbBox .thumbList .thumbContent{
+	width:100%;
+	height:100%;
+	position: absolute;
+	top:0px;
+	padding-top: 39px;
+}
+.picturesbox .thumbBox .thumbList .thumbContent .item-wrap{
+	width: 80px;
+	height: 80px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	display: table;
+	overflow: hidden;
+}
+.picturesbox .thumbBox .thumbList .thumbContent .item{
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	cursor: pointer;
+	vertical-align: middle;
+	display: flex;
+}
+.picturesbox .thumbBox .thumbList .thumbContent .item.selected{
+	border: 2px solid rgb(223, 223, 223);
+}
+
+
+.picturesbox .thumbBox .btn-wrap{
+  height: 29px;
+  background-color:rgb(66, 66, 66);
+  position: absolute;
+}
+.picturesbox .thumbBox .btn-wrap.top{
+	top: 0px;
+}
+.picturesbox .thumbBox .btn-wrap.bottom{
+	bottom: 0px;
+}
+
+.picturesbox .thumbBox .prev-pic,.picturesbox .thumbBox .next-pic{
+	width: 80px;
+	height: 29px;
+	position: absolute;
+	z-index:3001;
+	left:20px;
+}
+
+.picturesbox .thumbBox .prev-pic{
+	cursor: pointer;
+	background: url(picture-dialog-icon_69426717.png) no-repeat 0 -142px;
+}
+.picturesbox .thumbBox .prev-pic:hover{
+	background: url(picture-dialog-icon_69426717.png) no-repeat 0 -176px;
+}
+
+.picturesbox .thumbBox .next-pic{
+	cursor: pointer;
+	background: url(picture-dialog-icon_69426717.png) no-repeat 0 -244px;
+}
+.picturesbox .thumbBox .next-pic:hover {
+	background: url(picture-dialog-icon_69426717.png) no-repeat 0 -278px;
+}

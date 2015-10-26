@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GreenStatistics" pageWidth="780" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="740" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a884510-fdfb-4abd-8c8d-2646291d2a35">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="7acff345-c899-42a2-b674-d37f6f40b717"/>
+	<parameter name="printDate" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="userName" class="java.lang.String">
+		<fieldDescription><![CDATA[userName]]></fieldDescription>
+	</field>
+	<field name="userDescription" class="java.lang.String">
+		<fieldDescription><![CDATA[userDescription]]></fieldDescription>
+	</field>
+	<title>
+		<band height="60">
+			<staticText>
+				<reportElement mode="Opaque" x="208" y="0" width="189" height="50" uuid="dccab4ef-4170-4dab-8ebd-61cca21baf67"/>
+				<textElement textAlignment="Center">
+					<font fontName="宋体" size="24" pdfFontName="simfang.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[用户提报单]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="102" y="0" width="100" height="20" uuid="512d2108-7d8f-42ca-ae09-acad6734d109"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" pdfFontName="simfang.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[用户名称]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="0" width="331" height="20" uuid="b2e478bb-9158-43e3-8691-2c26da83196f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" pdfFontName="simfang.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[用户说明]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="202" y="0" width="331" height="20" uuid="df3efdda-7d67-4357-bc60-0a92c7aa9d4c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="simfang.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userDescription}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="100" height="20" uuid="2d06a584-28bf-4026-ba9e-3bb090c28fed"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="simfang.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30"/>
+	</pageFooter>
+	<summary>
+		<band height="71">
+			<staticText>
+				<reportElement x="383" y="20" width="50" height="20" uuid="a64c0580-22aa-4525-abee-b9e26b6e8698"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" pdfFontName="simfang.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[制单时间：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="40" width="100" height="20" uuid="c63d0c19-3bb9-4cc5-bb14-6f160b277214"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" pdfFontName="simfang.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[领用人签字：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="433" y="20" width="100" height="20" uuid="0d7b8a4c-533a-414a-a7bb-ecd4cf5c0291"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="宋体" pdfFontName="simfang.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
