@@ -4,3 +4,25 @@
 
 系统截图：
  ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/1.png)
+用户管理：
+  1、实现用户的增删改查
+  2、下载EXCEL模板文件，批量添加用户
+  3、通过echarts显示用户图表信息
+  4、使用jasperReport和Ireports使用用户报表打印功能
+  5、上传文件至FTP服务器，实现附件管理功能
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/userlist.png)
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/useradd.png)
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/userchart.png)
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/userprint.png)
+角色管理：
+ 实现角色的增删改查，为权限管理做准备。
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/rolelist.png)
+菜单管理：
+ easyui树表的形式实现菜单的增删改查
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/menu.png)
+部门管理：
+ ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/orglist.png)
+其他功能：
+ Quartz定时任务的实现。
+
+ 
