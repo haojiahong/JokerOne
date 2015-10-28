@@ -24,5 +24,8 @@
  ![image](https://github.com/haojiahong/JokerOne/blob/master/readme_image/orglist.png)
 其他功能：
  Quartz定时任务的实现。
+配置项目注意：
+配置数据库修改\config目录下的jdbc.properties即可。
+配置FTP服务器需修改，applicationContext.xml中的ftpStore这个Bean的serverIP属性，同时创建相应的FTP文件夹，接收上传文件。
 
  
