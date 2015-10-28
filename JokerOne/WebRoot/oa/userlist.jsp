@@ -14,6 +14,9 @@
 					<tr>
 						<th field="userName" width="100" sortable="true">用户名称</th>
 						<th field="userDescription" width="120">用户说明</th>
+						<th field="loginName" width="120">登陆名称</th>
+						<th field="phoneNumber" width="120">电话</th>
+						<th field="email" width="120">邮箱</th>
 						<th field="userId" data-options="formatter:ezEditFromat"
 							width="350" align="center">编辑</th>
 					</tr>
@@ -227,13 +230,12 @@
 	
 	//打印
 	function myPrint(){
-// 		$.modalDialog({
-// 			title : '打印',
-// 			width : 600,
-// 			height : 500,
-// 			href : 'userAction!myprint.do',
-// 		});
-		window.open('userAction!myprint.do');
+		var dialog = parent.hjh.modalDialog({
+			title : '打印',
+			width : 640,
+			height : 600,
+			url : 'userAction!myprint.do',
+		});
 	}
   	function myEChart() {
 		var dialog = parent.hjh.modalDialog({

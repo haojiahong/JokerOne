@@ -8,6 +8,7 @@ import cn.itcast.oa.common.service.UploadService;
 import cn.itcast.oa.domain.SimUpload;
 import cn.itcast.oa.model.PageInfo;
 import cn.itcast.oa.model.QueryParamList;
+import cn.itcast.oa.util.CommonUtil;
 import cn.itcast.oa.util.JPAUtil;
 
 @Service("uploadService")
@@ -16,6 +17,7 @@ public class UploadServiceImpl implements UploadService {
 	@Override
 	public void save(String entityId, String entityType, String filedataFileName) {
 		SimUpload sim = new SimUpload();
+		sim.setUploadId(CommonUtil.genUUID());
 		sim.setEntityId(entityId);
 		sim.setEntityType(entityType);
 		sim.setFileName(filedataFileName);

@@ -32,7 +32,7 @@
 		init-method="initialize">
 		<!-- FTP服务器的地址 -->
 		<property name="serverIP">
-			<value>192.168.1.104</value>
+			<value>192.168.1.103</value>
 		</property>
 		<!-- 服务器端口 -->
 		<property name="serverPort">
